@@ -61,7 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :buyer
+- belongs_to :buyer
 - has_one :shipping_address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -80,7 +80,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :item
+- has_many :item
 - has_one :shipping_address
 
 ## shipping_addresses テーブル
