@@ -27,14 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column    | Type   | Options     |
-| --------- | ------ | ----------- |
-| name      | string | null: false |
-| email     | string | null: false |
-| password  | string | null: false |
-| address   | string | null: false |
-| nickname  | string | null: false |
-| birth_day | string | null: false |
+| Column               | Type   | Options     |
+| -------------------- | ------ | ----------- |
+| family_name          | string | null: false |
+| first_name           | string | null: false |
+| family_name_furigana | string | null: false |
+| first_name_furigana  | string | null: false |
+| email                | string | null: false |
+| password             | string | null: false |
+| nickname             | string | null: false |
+| birth_day            | date   | null: false |
 
 ### Association
 
@@ -42,29 +44,34 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Culumn        | Type       | Option                         |
-| ------------- | ---------- | ------------------------------ |
-| image         | string     | null: false                    |
-| category      | string     | null: false                    |
-| name          | string     | null: false                    |
-| price         | integer    | null: false                    |
-| condition     | string     | null: false                    |
-| pay_postage   | string     | null: false                    |
-| area          | string     | null: false                    |
-| shipping_date | string     | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
+| Culumn           | Type       | Option                         |
+| ---------------- | ---------- | ------------------------------ |
+| image            | string     | null: false                    |
+| category id      | integer    | null: false                    |
+| name             | string     | null: false                    |
+| price            | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| pay_postage_id   | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_date_id | integer    | null: false                    |
+| user_id          | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :buyer
 - has_one :shipping_address
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :pay_postage
+- belongs_to_active_hash :shipping_date
+- belongs_to_active_hash :prefecture
 
 ## buyers テーブル
 
 | Culumn  | Type       | Option                         |
 | ------- | ---------- | ------------------------------ |
-| name    | string     | null: false                    |
+| user_id | references | null: false, foreign_key: true |
 | item_id | references | null: false, foreign_key: true |
 
 ### Association
@@ -74,14 +81,18 @@ Things you may want to cover:
 
 ## shipping_addresses テーブル
 
-| Culumn       | Type       | Option                         |
-| ------------ | ---------- | ------------------------------ |
-| address      | string     | null: false                    |
-| postal_code  | integer    | null: false                    |
-| phone_number | integer    | null: false                    |
-| buyer_id     | references | null: false, foreign_key: true |
+| Culumn        | Type       | Option                         |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false                    |
+| buyer_id      | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :buyer
 - belongs_to :item
+- belongs_to_active_hash :prefecture
