@@ -50,7 +50,7 @@ Things you may want to cover:
 | image            | string     | null: false                    |
 | category id      | integer    | null: false                    |
 | name             | string     | null: false                    |
-| explanation      | string     | null: false                    |
+| explanation      | text       | null: false                    |
 | price            | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | pay_postage_id   | integer    | null: false                    |
