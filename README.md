@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_one :buyer
+- has_many :buyer
 
 ## items テーブル
 
@@ -50,6 +50,7 @@ Things you may want to cover:
 | image            | string     | null: false                    |
 | category id      | integer    | null: false                    |
 | name             | string     | null: false                    |
+| explanation      | string     | null: false                    |
 | price            | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | pay_postage_id   | integer    | null: false                    |
@@ -70,10 +71,11 @@ Things you may want to cover:
 
 ## buyers テーブル
 
-| Culumn | Type       | Option                         |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| Culumn           | Type       | Option                         |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+| shipping_address | references | null: false, foreign_key: true
 
 ### Association
 
@@ -85,12 +87,12 @@ Things you may want to cover:
 
 | Culumn        | Type       | Option                         |
 | ------------- | ---------- | ------------------------------ |
-| postal_code   | integer    | null: false                    |
+| postal_code   | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
-| phone_number  | integer    | null: false                    |
+| phone_number  | string     | null: false                    |
 | buyer         | references | null: false, foreign_key: true |
 
 ### Association
