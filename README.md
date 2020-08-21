@@ -41,6 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
+- has_one :buyer
 
 ## items テーブル
 
@@ -54,12 +55,12 @@ Things you may want to cover:
 | pay_postage_id   | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | shipping_date_id | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
+- has_one :buyer
 - has_one :shipping_address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -69,14 +70,15 @@ Things you may want to cover:
 
 ## buyers テーブル
 
-| Culumn  | Type       | Option                         |
-| ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| Culumn | Type       | Option                         |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :items
+- belongs_to :user
+- belongs_to :item
 - has_one :shipping_address
 
 ## shipping_addresses テーブル
@@ -89,7 +91,7 @@ Things you may want to cover:
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | integer    | null: false                    |
-| buyer_id      | references | null: false, foreign_key: true |
+| buyer         | references | null: false, foreign_key: true |
 
 ### Association
 
