@@ -62,7 +62,6 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :buyer
-- has_one :shipping_address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :pay_postage
@@ -75,12 +74,11 @@ Things you may want to cover:
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
-| shipping_address | references | null: false, foreign_key: true
 
 ### Association
 
 - belongs_to :user
-- has_many :item
+- belongs_to :item
 - has_one :shipping_address
 
 ## shipping_addresses テーブル
@@ -98,5 +96,4 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :buyer
-- belongs_to :item
 - belongs_to_active_hash :prefecture
