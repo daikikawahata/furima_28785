@@ -41,7 +41,7 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :buyer
+- has_many :buyers
 
 ## items テーブル
 
@@ -61,7 +61,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
+- has_one :buyer
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :pay_postage
