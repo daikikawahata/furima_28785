@@ -13,4 +13,5 @@ class Item < ApplicationRecord
 
   validates :category_id, :condition_id, :pay_postage_id, :shipping_date_id, numericality: { other_than: 1 }
   validates  :prefecture_id, numericality: { other_than: 0 }
+  validates :price, numericality: {only_integer: true, greater_than: 300, less_than:9999999}
 end
