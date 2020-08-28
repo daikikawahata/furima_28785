@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include("Email has already been taken")
+      expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it 'emailに＠を含んだ正しい形式でないと保存できないこと' do
       @user.email = 'daikikawahataicliud.com'
