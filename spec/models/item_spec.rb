@@ -23,29 +23,57 @@ RSpec.describe Item, type: :model do
       @item.explanation = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Explanation can't be blank")
-      
     end
     it "カテゴリーが空では保存できないこと" do
       @item.category_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
+    it "カテゴリーが---では保存できないこと" do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
     it "商品の状態が空だと保存できないこと" do
       @item.condition_id = nil
       @item.valid?
-
       expect(@item.errors.full_messages).to include("Condition can't be blank")
+    end
+    it "商品の状態が---では保存できないこと" do
+    @item.condition_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Condition must be other than 1")
+    end
+    it "配送料の負担が空では保存できないこと" do
+      @item.pay_postage_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Pay postage can't be blank")
+    end
+    it "配送料の負担が---では保存できないこと" do
+      @item.pay_postage_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Pay postage must be other than 1")
     end
     it "発送元の地域が空だと保存できないこと" do
       @item.prefecture_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
     end
+    it "発送元の地域が---では保存できないこと" do
+      @item.prefecture_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
+    end
     it "発送までの日時が空だと保存できないこと" do
       @item.shipping_date_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping date can't be blank")
     end
+     it "発送までの日時が---では保存できないこと" do
+      @item.shipping_date_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipping date must be other than 1")
+     end
     it "ユーザーが紐付いていないと保存できない" do
       @item.user = nil
       @item.valid?
