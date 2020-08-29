@@ -47,7 +47,7 @@ Things you may want to cover:
 
 | Culumn           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
-| image            | string     | null: false                    |
+| #image            | string     | null: false                    |
 | category_id      | integer    | null: false                    |
 | name             | string     | null: false                    |
 | explanation      | text       | null: false                    |

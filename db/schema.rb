@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_030612) do
     t.integer "pay_postage_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "shipping_date_id", null: false
+    t.integer "buyer_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
