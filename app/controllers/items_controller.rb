@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 
   def update
     @buyer = Item.find(params[:id])
-    @buyer.update( buyer_id: current_user.id)
+    @buyer.update(buyer_id: current_user.id)
   end
 
   private
