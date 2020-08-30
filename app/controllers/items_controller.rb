@@ -18,10 +18,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update
-    @buyer = Item.find(params[:id])
-    @buyer.update(buyer_id: current_user.id)
+  def show
+    @item = Item.find(params[:id])
   end
+
+  #def update
+    #@buyer = Item.find(params[:id])
+    #@buyer.update(buyer_id: current_user.id)
+  #end
 
   private
 
