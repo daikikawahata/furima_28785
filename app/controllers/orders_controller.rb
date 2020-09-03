@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_index_not_signed
-  before_action :move_to_imdex_owner
+  before_action :move_to_index_owner
+  before_action :set_item, except: [:create]
 
   def index
     @item = Item.find(params[:item_id])
@@ -23,6 +24,10 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+  
   def shipping_address_params
     params.require(
       :shipping_address_buyer
@@ -43,7 +48,7 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_imdex_owner
+  def move_to_index_owner
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user.id
       redirect_to root_path
