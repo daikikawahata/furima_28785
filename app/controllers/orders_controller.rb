@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   before_action :set_item, except: [:create]
 
   def index
-    @item = Item.find(params[:item_id])
     @shipping_address = ShippingAddressBuyer.new
   end
 
