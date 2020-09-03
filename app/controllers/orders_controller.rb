@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_index_not_signed
   before_action :move_to_index_owner
-  before_action :set_item, except: [:create]
+  before_action :set_item
 
   def index
     @shipping_address = ShippingAddressBuyer.new
@@ -12,11 +12,9 @@ class OrdersController < ApplicationController
     if @shipping_address.valid? && params[:token].present?
       pay_item
       @shipping_address.save
-      @item = Item.find(params[:item_id])
       @item.update(buyer_id: current_user.id)
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
