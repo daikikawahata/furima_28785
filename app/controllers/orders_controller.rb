@@ -57,4 +57,4 @@ class OrdersController < ApplicationController
   def move_to_index_not_signed
     redirect_to root_path unless user_signed_in?
   end
-end
+end 
