@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       @shipping_address.save
       @item = Item.find(params[:item_id])
       @item.update(buyer_id: current_user.id)
-      return redirect_to root_path
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
       render :index
@@ -29,26 +29,24 @@ class OrdersController < ApplicationController
 
   def pay_item
     @item = Item.find(params[:item_id])
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 
   def move_to_imdex_owner
     @item = Item.find(params[:item_id])
     if current_user.id == @item.user.id
-      redirect_to root_path 
-    elsif @item.buyer_id.present? 
+      redirect_to root_path
+    elsif @item.buyer_id.present?
       redirect_to root_path
     end
   end
 
   def move_to_index_not_signed
-    unless user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in?
   end
 end

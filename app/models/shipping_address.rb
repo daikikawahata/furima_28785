@@ -3,7 +3,7 @@ class ShippingAddress < ApplicationRecord
   belongs_to :buyer
   belongs_to_active_hash :prefecture
 
-  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/.freeze
 
   validates :postal_code, :prefecture_id, :city, :house_number, :phone_number, presence: true
   validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/	}
